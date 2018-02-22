@@ -1,0 +1,201 @@
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background: rgb(0, 191, 255);
+  background: rgba(0, 191, 255, 0.5);
+  color: #ffebcd;
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+}
+
+#navLogo {
+  text-align: right;
+  margin: 0.25em 1em;
+}
+
+#navLogo h3 {
+  font-family: Courier, monospace;
+  font-size: 1.5em;
+  margin: 2px;
+}
+
+#navLogo h4 {
+  font-family: Courier, monospace;
+  font-size: 0.75em;
+  margin: 2px;
+}
+
+#menu {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 13em;
+  margin: 0 1em;
+  justify-content: space-around;
+}
+
+.menuLink {
+  flex-grow: 1;
+  align-self: center;
+  text-align: center;
+  padding-right: 0.25em;
+}
+
+.menuLink a{
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  color: #ffebcd;
+  -webkit-transition: color 1s;
+  transition: color 1s;
+}
+
+.menuLink a:hover {
+  color: #ffa789;
+}
+
+#scroll_animate {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#scroll_animate_main {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: static;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: url('../images/parallaxBgBlue1824.jpg') no-repeat 50% 50%;
+  top: 0;
+  z-index: -1;
+  justify-content: center;
+}
+
+header img {
+  display: block;
+  margin-top: 2em;
+  border-radius: 50%;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+header h2 {
+  color: #ffebcd;
+  font-family: Arial, sans-serif;
+  width: 70%;
+  text-align: center;
+  margin: 1em;
+  font-size: 1.5em;
+  line-height: 1.25em;
+}
+
+main {
+  height: auto;
+  width: 100%;
+  background: #ffebcd;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  justify-content: center;
+}
+
+main h2 {
+  grid-row: 1/2;
+  grid-column: 1/13;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 3em;
+  text-transform: uppercase;
+  color: #999;
+  text-align: center;
+}
+
+.project_item {
+  grid-column: auto / span 4;
+  text-align: justify;
+  margin: 0 2em;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 2;
+  width: 100%;
+  align-items: center;
+  height: auto;
+  background-color: gray;
+  position: relative;
+  z-index: 1;
+}
+
+#email {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+
+#networks {
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
+
+#copyright {
+  grid-row: 2/3;
+  grid-column: 1/3;
+}
+
+.wrapper_parallax {
+  margin-top: 100vh;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+header, #scroll-animate-main {
+  -webkit-transition-property: all;
+     -moz-transition-property: all;
+      transition-property: all;
+
+  -webkit-transition-duration: 0.4s;
+     -moz-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+     -moz-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+      transition-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+
+@media only screen and (max-width: 750px) {
+  header {position: static;}
+  .wrapper_parallax {margin-top: 0; box-shadow: 0;}
+}
+
+@media only screen and (max-width: 480px) {
+  header img {width: 150px; height: auto;}
+  header h2 {font-size: 1em;}
+  #menu {display: none;}
+}
