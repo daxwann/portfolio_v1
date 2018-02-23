@@ -1,34 +1,30 @@
+//create parallax effect on header bg and nav logo
+function parallax() {
+  var scrolled = $(window).scrollTop();
+  var windowWidth = $(window).width();
+  $('header').css('top', -(scrolled*0.2)+'px');
+  if(windowWidth<751) {
+    $('nav').css('top', -(scrolled*0.3)+'px');
+  } else {
+    $('nav').css('top', '0px');
+  };
+}
 
-$(window).load(function(){
-    var windowHeight        = $(window).height(),
-        footerHeight        = $('footer').height(),
-        heightDocument      = (windowHeight) + ($('.content').height()) + ($('footer').height()) - 20;
+//for lg screen only: increase nav opacity when scrolled below header
+function navOpacity() {
+  var scrolled = $(window).scrollTop();
+  var windowHeight = $(window).height();
+  var windowWidth = $(window).width();
+  var navHeight = $('nav').height();
+  if(windowWidth>750 && scrolled>(windowHeight-navHeight)) {
+    $('nav').css('background', 'rgba(0, 191, 255, 0.5)');
+  } else {
+    $('nav').css('background', 'rgba(0, 191, 255, 0)');
+  };
+}
 
-    // Definindo o tamanho do elemento pra animar
-    $('#scroll-animate, #scroll-animate-main').css({
-        'height' :  heightDocument + 'px'
-    });
-
-    // Definindo o tamanho dos elementos header e conteúdo
-    $('header').css({
-        'height' : windowHeight + 'px',
-        'line-height' : windowHeight + 'px'
-    });
-
-    $('.wrapper-parallax').css({
-        'margin-top' : windowHeight + 'px'
-    });
-
-    // ao dar rolagem
-    window.onscroll = function(){
-        var scroll = window.scrollY;
-
-        $('#scroll-animate-main').css({
-            'top' : '-' + scroll + 'px'
-        });
-
-        $('header').css({
-            'background-position-y' : 50 - (scroll * 100 / heightDocument) + '%'
-        });
-    }
+//scroll functions
+$(window).scroll(function(e) {
+  parallax();
+  navOpacity();
 });
